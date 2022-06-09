@@ -1,4 +1,5 @@
 import 'package:e_comm_app/const.dart';
+import 'package:e_comm_app/widgets/custom_button_view.dart';
 import 'package:e_comm_app/widgets/custom_form_field.dart';
 import 'package:e_comm_app/widgets/custom_social_sign_in_btn.dart';
 import 'package:flutter/material.dart';
@@ -48,24 +49,34 @@ class Login extends StatelessWidget {
                 Form(
                   child: Column(
                     children: <Widget>[
-                      const CustumFormField(
+                      CustumFormField(
                         hint: 'brahimtuijine@gmail.com',
                         keyBordType: TextInputType.emailAddress,
                         labelText: 'E-mail',
+                        onSave: () {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: Get.height * .2 / 4,
                       ),
-                      const CustumFormField(
+                      CustumFormField(
                         hint: '* * * * * *',
                         keyBordType: TextInputType.visiblePassword,
                         labelText: 'Password',
+                        onSave: () {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(),
-                          TextButton(
+                      Padding(
+                        padding: EdgeInsets.only(
+                            bottom: Get.width * .1 / 3,
+                            top: Get.width * .1 / 3),
+                        child: Container(
+                          alignment: AlignmentDirectional.topEnd,
+                          child: TextButton(
                             onPressed: () {},
                             child: const Text(
                               "Forgot Password?",
@@ -74,22 +85,14 @@ class Login extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: Get.width * .3 / 2,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Constants.primaryColor),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            "SIGN IN",
-                          ),
                         ),
                       ),
+
+                      CustomButtonView(
+                          height: Get.width * .3 / 2,
+                          width: double.infinity,
+                          text: "SIGN IN"),
+
                       Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: Get.height * .1 / 2),
@@ -99,6 +102,7 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       const CustomSocialSignInBtn(), //rodha custom w a3mel l fields with cunstructor
+                      
                     ],
                   ),
                 ),

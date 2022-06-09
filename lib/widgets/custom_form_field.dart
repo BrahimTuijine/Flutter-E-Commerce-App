@@ -5,12 +5,18 @@ class CustumFormField extends StatelessWidget {
   final String hint;
   final TextInputType keyBordType;
   final String labelText;
+  // final VoidCallback onSave;
+
+  final FormFieldSetter<String>? onSaved;
+  final String? Function(String?)? validator;
 
   const CustumFormField(
       {Key? key,
       required this.hint,
       required this.keyBordType,
-      required this.labelText})
+      required this.labelText,
+      required this.validator,
+      this.onSaved, required Null Function() onSave})
       : super(key: key);
 
   @override
@@ -23,6 +29,8 @@ class CustumFormField extends StatelessWidget {
           style: const TextStyle(color: Constants.grey),
         ),
         TextFormField(
+          validator: validator,
+          onSaved: onSaved,
           keyboardType: keyBordType,
           decoration: InputDecoration(hintText: hint),
         ),

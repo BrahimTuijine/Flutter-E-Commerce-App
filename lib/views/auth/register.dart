@@ -1,4 +1,5 @@
 import 'package:e_comm_app/const.dart';
+import 'package:e_comm_app/widgets/custom_button_view.dart';
 import 'package:e_comm_app/widgets/custom_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,44 +39,47 @@ class Register extends StatelessWidget {
                 Form(
                   child: Column(
                     children: <Widget>[
-                      const CustumFormField(
+                      CustumFormField(
                         hint: 'brahim tuijine',
                         keyBordType: TextInputType.name,
                         labelText: 'Name',
+                        onSave: () {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: Get.height * .2 / 4,
                       ),
-                      const CustumFormField(
+                      CustumFormField(
                         hint: 'brahimTuijine@gmail.com',
                         keyBordType: TextInputType.emailAddress,
                         labelText: 'Email',
+                        onSave: () {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: Get.height * .2 / 4,
                       ),
-                      const CustumFormField(
+                      CustumFormField(
                         hint: '* * * * * * ',
                         keyBordType: TextInputType.visiblePassword,
                         labelText: 'Password',
+                        onSave: () {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
                       Container(
                         margin: EdgeInsets.only(
                           top: Get.height * .2 / 4,
                         ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: Get.width * .3 / 2,
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Constants.primaryColor)),
-                            onPressed: () {},
-                            child: const Text(
-                              "SIGN UP",
-                            ),
-                          ),
-                        ),
+                        child: CustomButtonView(
+                            height: Get.width * .3 / 2,
+                            width: double.infinity,
+                            text: "REGISTER"),
                       ),
                     ],
                   ),
