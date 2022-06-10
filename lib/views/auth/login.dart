@@ -1,11 +1,12 @@
 import 'package:e_comm_app/const.dart';
+import 'package:e_comm_app/core/view_model/auth_view_model.dart';
 import 'package:e_comm_app/widgets/custom_button_view.dart';
 import 'package:e_comm_app/widgets/custom_form_field.dart';
 import 'package:e_comm_app/widgets/custom_social_sign_in_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class Login extends GetWidget<AuthViewModel> {
   const Login({Key? key}) : super(key: key);
 
   @override
@@ -44,9 +45,10 @@ class Login extends StatelessWidget {
                   style: TextStyle(color: Constants.grey),
                 ),
                 SizedBox(
-                  height: Get.height * .1,
+                  height: Get.height * .1 / 2,
                 ),
                 Form(
+                  key: controller.formkey,
                   child: Column(
                     children: <Widget>[
                       CustumFormField(
@@ -72,8 +74,8 @@ class Login extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            bottom: Get.width * .1 / 3,
-                            top: Get.width * .1 / 3),
+                            bottom: Get.width * .1 / 4,
+                            top: Get.width * .1 / 4),
                         child: Container(
                           alignment: AlignmentDirectional.topEnd,
                           child: TextButton(
@@ -95,14 +97,27 @@ class Login extends StatelessWidget {
 
                       Padding(
                         padding:
-                            EdgeInsets.symmetric(vertical: Get.height * .1 / 2),
+                            EdgeInsets.symmetric(vertical: Get.height * .1 / 4),
                         child: const Text(
                           '-OR-',
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
-                      const CustomSocialSignInBtn(), //rodha custom w a3mel l fields with cunstructor
-                      
+                      CustomSocialSignInBtn(
+                        imagePath: 'assets/images/facebook.png',
+                        text: 'Sign In With Facebook',
+                        ontab: () {},
+                      ), //rodha custom w a3mel l fields with cunstructor
+                      SizedBox(
+                        height: Get.width * .1 / 2,
+                      ),
+                      CustomSocialSignInBtn(
+                        imagePath: 'assets/images/google.png',
+                        text: 'Sign In With Google',
+                        ontab: () {
+                          controller.googleSignIn();
+                        },
+                      ), //rodha custom w a3mel l fields with cunstructor
                     ],
                   ),
                 ),

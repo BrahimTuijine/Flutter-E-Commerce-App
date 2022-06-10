@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:e_comm_app/helper/binding.dart';
 import 'package:e_comm_app/theme/theme.dart';
 import 'package:e_comm_app/views/auth/login.dart';
 import 'package:e_comm_app/views/auth/register.dart';
@@ -17,8 +18,10 @@ void main() async {
 }
 
 MyApp() => GetMaterialApp(
+      
       debugShowCheckedModeBanner: false,
-      theme: appThemeData(),
+      theme: appThemeData(),  
+      initialBinding: Binding(),
       defaultTransition: Transition.fade,
       home: const Login(),
       routes: {
