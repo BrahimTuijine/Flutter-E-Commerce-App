@@ -7,11 +7,16 @@ class CustomButtonView extends GetView {
   final double height;
   final double width;
   final String text;
+  final VoidCallback? onpress;
 
   const CustomButtonView(
-      {Key? key, required this.height, required this.width, required this.text})
+      {Key? key,
+      required this.height,
+      required this.width,
+      required this.text,
+      required this.onpress})
       : super(key: key);
-      
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +26,7 @@ class CustomButtonView extends GetView {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(Constants.primaryColor),
         ),
-        onPressed: () {},
+        onPressed: onpress,
         child: Text(
           text,
         ),

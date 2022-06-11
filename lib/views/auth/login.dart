@@ -55,8 +55,13 @@ class Login extends GetWidget<AuthViewModel> {
                         hint: 'brahimtuijine@gmail.com',
                         keyBordType: TextInputType.emailAddress,
                         labelText: 'E-mail',
-                        onSave: () {},
-                        validator: (value) {
+                        onSave: (String? value) {
+                          controller.email = value!;
+                        },
+                        validator: (String? value) {
+                          if (value == "") {
+                            return "email ma yelzemch ykoun fara4";
+                          }
                           return null;
                         },
                       ),
@@ -67,8 +72,13 @@ class Login extends GetWidget<AuthViewModel> {
                         hint: '* * * * * *',
                         keyBordType: TextInputType.visiblePassword,
                         labelText: 'Password',
-                        onSave: () {},
-                        validator: (value) {
+                        onSave: (String? value) {
+                          controller.password = value!;
+                        },
+                        validator: (String? value) {
+                          if (value == "") {
+                            return "password ma yelzemch ykoun fara4";
+                          }
                           return null;
                         },
                       ),
@@ -91,6 +101,12 @@ class Login extends GetWidget<AuthViewModel> {
                       ),
 
                       CustomButtonView(
+                          onpress: () {
+                            controller.formkey.currentState!.save();
+                            // if (controller.formkey.currentState!.validate()) {
+                            controller.signInWithEmailAndPassword();
+                            // }
+                          },
                           height: Get.width * .3 / 2,
                           width: double.infinity,
                           text: "SIGN IN"),

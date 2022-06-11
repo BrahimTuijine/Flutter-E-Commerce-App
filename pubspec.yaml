@@ -11,7 +11,6 @@ dependencies:
   firebase_core: ^1.17.1
   flutter:
     sdk: flutter
-  flutter_facebook_login: ^3.0.0
   get: ^4.6.5
   google_sign_in: ^5.3.3
 

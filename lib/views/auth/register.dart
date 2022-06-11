@@ -43,7 +43,7 @@ class Register extends StatelessWidget {
                         hint: 'brahim tuijine',
                         keyBordType: TextInputType.name,
                         labelText: 'Name',
-                        onSave: () {},
+                        onSave: (value) {},
                         validator: (value) {
                           return null;
                         },
@@ -55,7 +55,7 @@ class Register extends StatelessWidget {
                         hint: 'brahimTuijine@gmail.com',
                         keyBordType: TextInputType.emailAddress,
                         labelText: 'Email',
-                        onSave: () {},
+                        onSave: (value) {},
                         validator: (value) {
                           return null;
                         },
@@ -67,7 +67,7 @@ class Register extends StatelessWidget {
                         hint: '* * * * * * ',
                         keyBordType: TextInputType.visiblePassword,
                         labelText: 'Password',
-                        onSave: () {},
+                        onSave: (value) {},
                         validator: (value) {
                           return null;
                         },
@@ -77,9 +77,11 @@ class Register extends StatelessWidget {
                           top: Get.height * .2 / 4,
                         ),
                         child: CustomButtonView(
-                            height: Get.width * .3 / 2,
-                            width: double.infinity,
-                            text: "REGISTER"),
+                          height: Get.width * .3 / 2,
+                          width: double.infinity,
+                          text: "REGISTER",
+                          onpress: () {},
+                        ),
                       ),
                     ],
                   ),

@@ -8,6 +8,8 @@ class AuthViewModel extends GetxController {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  late String email, password;
+
   void googleSignIn() async {
     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
@@ -23,5 +25,14 @@ class AuthViewModel extends GetxController {
         idToken: googleAuth!.idToken, accessToken: googleAuth.accessToken);
 
     await _auth.signInWithCredential(credential);
+  }
+
+  void signInWithEmailAndPassword() async {
+    try {
+      UserCredential usesr = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } catch (e) {
+      Get.snackbar("error", e.toString(), snackPosition: SnackPosition.BOTTOM);
+    }
   }
 }
